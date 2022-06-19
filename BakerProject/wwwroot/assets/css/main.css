@@ -440,7 +440,7 @@ input[type='range'] {
     display: inline-block;
     vertical-align: middle;
     font-family: ElegantIcons;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1;
     letter-spacing: 2px;
     color: #e1be64;
@@ -452,16 +452,30 @@ input[type='range'] {
     content: "\✩\✩\✩\✩\✩";
 }
 
+
 .star-rating span:before {
     content: "\★\★\★\★\★";
 }
 
+.edgtf-pl-rating-holder {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+    line-height: 1;
+    margin: 6px 0 0;
+}
 .star-rating span {
     position: absolute;
     top: 0;
-    left: 0;
+    left:0;
     overflow: hidden;
     color: #E1BE64;
+}
+
+.star {
+    left: 103px;
+    bottom: 110px
 }
 
 .pt-35 {

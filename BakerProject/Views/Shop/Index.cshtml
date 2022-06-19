@@ -25,19 +25,23 @@
                          style=" width: 18rem; border: none; line-height: 30px; cursor: pointer;">
                                 <div class="position-relative">
                                     <img src="~/assets/images/shop/@Model.Products[i].Image" class="card-img-top " alt="...">
-                                      <form method="post" asp-controller="Shop" asp-action="AddBasket" asp-route-id="@Model.Products[i].Id">
-                                    <button type="submit" data-target="@i" class="position-absolute h-0 addcart"
-                                 style="transition: 0.3s ease; border:none; left: 21.5%; cursor: pointer; bottom: 1px; background-color: #181818;  padding: 0px 35px; font-size: 14px;">
-                                        <span class="text-light" style="transition: 0.3s ease;">ADD TO CART</span>
-                                    </button>
+                                    <form method="post" asp-controller="Shop" asp-action="AddBasket" asp-route-id="@Model.Products[i].Id">
+                                        <button type="submit" data-target="@i" class="position-absolute h-0 addcart"
+                                        style="transition: 0.3s ease; border:none; left: 21.5%; cursor: pointer; bottom: 1px; background-color: #181818;  padding: 0px 35px; font-size: 14px;">
+                                            <span class="text-light" style="transition: 0.3s ease;">ADD TO CART</span>
+                                        </button>
                                     </form>
                                 </div>
 
                                 <div class="card-body">
                                     <small style="font-size: 14px;">@Model.Products[i].Title</small>
+                                    <div><br /></div>
                                     <h5 class="card-title text-dark">@Model.Products[i].Name</h5>
                                     <p class="card-text text-dark">$@Model.Products[i].Price</p>
                                 </div>
+                            </div>
+                            <div class="star-rating star" role="img" aria-label="Rated 3.00 out of 5">
+                                <span style="width:@(Model.Products[i].Raiting)%"></span>
                             </div>
                         </div>
                     }

@@ -29,9 +29,12 @@ let arr = document.querySelectorAll(".addcart");
 $(".cardimg").hover(function () {
     let id = $(this).attr("data-id");
     arr.forEach(x => {
+        x.classList.add("c-pointer");
         if (x.getAttribute("data-target") == id) {
-            x.classList.toggle("h-0");
-            x.classList.add("c-pointer");
+            x.classList.remove("h-0");
+        }
+        else {
+            x.classList.add("h-0");
         }
     })
 })
