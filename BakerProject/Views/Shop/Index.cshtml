@@ -1,0 +1,128 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_ShopLayout.cshtml";
+}
+
+@model ShopVm
+
+<main>
+    <div class="header-img"
+         style="padding-top: 10%; padding-bottom: 10%; background-image: url(/../assets/images/shop/shop-title-area.jpg);">
+        <div class="text-sm-center">
+            <h2 style="font-size: 50px; color: white;">SHOP</h2>
+            <p style="font-size: 16px; color: white;">Experienced and Friendly</p>
+        </div>
+    </div>
+    <section id="products" class="pb-5">
+        <div class="container ">
+            <div class="row " style="padding-right: 25%;">
+                @if (Model != null && Model.Products.Count > 0)
+                {
+                    @for (var i = 0; i < Model.Products.Count; i++)
+                    {
+                        <div class="col-sm-4 cardimg" data-ci-target="@Model.Products[i].CategoryId" data-id="@i" style=" z-index: 1;">
+                            <div class="card text-center "
+                         style=" width: 18rem; border: none; line-height: 30px; cursor: pointer;">
+                                <div class="position-relative">
+                                    <img src="~/assets/images/shop/@Model.Products[i].Image" class="card-img-top " alt="...">
+                                      <form method="post" asp-controller="Shop" asp-action="AddBasket" asp-route-id="@Model.Products[i].Id">
+                                    <button type="submit" data-target="@i" class="position-absolute h-0 addcart"
+                                 style="transition: 0.3s ease; border:none; left: 21.5%; cursor: pointer; bottom: 1px; background-color: #181818;  padding: 0px 35px; font-size: 14px;">
+                                        <span class="text-light" style="transition: 0.3s ease;">ADD TO CART</span>
+                                    </button>
+                                    </form>
+                                </div>
+
+                                <div class="card-body">
+                                    <small style="font-size: 14px;">@Model.Products[i].Title</small>
+                                    <h5 class="card-title text-dark">@Model.Products[i].Name</h5>
+                                    <p class="card-text text-dark">$@Model.Products[i].Price</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                }
+                <div class="cat " style="position: absolute; padding-left: 65%; padding-top: 5%;">
+                    <ul>
+                        <li>
+                            <h4 class="text-dark" style="letter-spacing: 2px; font-size: 20px; ">CATEGORIES</h4>
+                        </li>
+                        <li class="sidebtn btnall">All</li>
+                        @if (Model != null && Model.Categories.Count > 0)
+                        {
+                            @foreach (var item in Model.Categories)
+                            {
+                                <li data-id="@item.Id" class="sidebtn catbtns">@item.Name</li>
+                            }
+                        }
+                        <li class="pt-5">
+                            <form action="post">
+                                <div class="d-flex search-product">
+                                    <input type="text" placeholder="Search Products..." name="" id="">
+                                    <button class="text-uppercase"><i class="las la-search"></i></button>
+                                </div>
+                            </form>
+                        </li>
+                        <li class="pt-5 pb-3">
+                            <h4 class="text-dark" style="letter-spacing: 2px; font-size: 20px; ">
+                                FILTER BY PRICE
+                            </h4>
+                            <input type="range">
+                        </li>
+                        <li>Price: $40 — $190</li>
+                        <li class="pt-3">
+                            <a class="filter" href="">FILTER</a>
+                        </li>
+                        <li class="mt-5">
+                            <h4 class="text-dark" style="letter-spacing: 2px; font-size: 20px; ">
+                                BEST
+                                PRODUCTS
+                            </h4>
+                        </li>
+                        <li class="mt-4">
+                            <ul>
+                                <li>
+                                    <div class="d-flex">
+                                        <img src="~/assets/images/shop/shop-img-10-604x684.jpg" width="100" alt="">
+                                        <div class="d-flex flex-column">
+                                            <a href="">Spanish Bread</a>
+                                            <div class="star-rating" role="img" aria-label="Rated 3.00 out of 5">
+                                                <span style="width:100%"></span>
+                                            </div>
+                                            <p class="price">$150.00 <br> $115.00</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-flex">
+                                        <img src="~/assets/images/shop/shop-img-3-604x684.jpg" width="100" alt="">
+                                        <div class="d-flex flex-column">
+                                            <a href="">Spanish Bread</a>
+                                            <div class="star-rating" role="img" aria-label="Rated 3.00 out of 5">
+                                                <span style="width:100%"></span>
+                                            </div>
+                                            <p class="price">$150.00 <br> $115.00</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-flex">
+                                        <img src="~/assets/images/shop/shop-img-6-604x684.jpg" width="100" alt="">
+                                        <div class="d-flex flex-column">
+                                            <a href="">Spanish Bread</a>
+                                            <div class="star-rating" role="img" aria-label="Rated 3.00 out of 5">
+                                                <span style="width:100%"></span>
+                                            </div>
+                                            <p class="price">$150.00 <br> $115.00</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    int index = 1;
+}
+@model List<Product>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Name</th>
+                <th>Category Name</th>
+                <th>Raiting</th>
+                <th>Price</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(index++)</td>
+                    <td><img width="70" src="~/assets/images/shop/@item.Image" /></td>
+                    <td>@item.Title</td>
+                    <td>@item.Name</td>
+                    <td>@(item.Category != null ? item.Category.Name : "")</td>
+                    <td>@item.Raiting</td>
+                    <td>@item.Price</td>
+                    <td><a asp-controller="Product" asp-action="Edit" asp-area="Manage" asp-route-id="@item.Id" class="text-info">Edit</a></td>
+                    <td><a asp-controller="Product" asp-action="Delete" asp-area="Manage" asp-route-id="@item.Id" class="text-danger">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h1 class="display-4">Products page is empty</h1>
+}
+
+
+
